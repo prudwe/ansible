@@ -1,0 +1,20 @@
+---
+- name: Installing HTTPD in g2
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Adding page to CentOS
+    copy: 
+      src: centos.html
+      dest: /var/www/html
+    when: ansible_distribution == "CentOS"
+
+
+  - name: Adding page to Ubuntu
+    copy:
+      src: ubuntu.html
+      dest: /var/www/html
+    when: ansible_distribution == "Ubuntu"
+
+...

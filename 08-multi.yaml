@@ -1,0 +1,49 @@
+---
+- name: Installing HTTPD in g2
+  hosts: all
+  become: yes
+
+  tasks:
+  - name: Install HTTPD in g2
+    package: 
+      name: httpd
+      state: present
+    when: ansible_distribution == "CentOS"
+
+  - name: Starting HTTP
+    service:
+      name: httpd
+      state: started
+    when: ansible_distribution == "CentOS"
+
+  - name: Enabling HTTP
+    service:
+      name: httpd
+      enabled: true
+    when: ansible_distribution == "CentOS"
+
+  - name: Upadate APT in ubuntu
+    apt:
+      update_cache: true
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Install APACHE2 in u2
+    package:
+      name: apache2
+      state: present
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Starting APACHE2 in u2
+    service:
+      name: apache2
+      state: started
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Enabling APACHE2 in u2
+    service:
+      name: apache2
+      enabled: true
+    when: ansible_distribution == "Ubuntu"
+
+
+... 

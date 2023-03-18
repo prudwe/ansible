@@ -1,0 +1,10 @@
+---
+- name: Creating directory in n1
+  hosts: n1
+
+  tasks:
+  - name: Creating directory in n1
+    file: 
+      path: /home/centos/n1
+      state: directory
+... 

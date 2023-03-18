@@ -1,0 +1,25 @@
+---
+- name: Updating HTTPD config in g2
+  hosts: g2
+  become: yes
+
+  tasks:
+  - name: Enable SELINUX in g2
+    selinux:
+      policy: targeted
+      state: permissive 
+
+  - name: Updating HTTPD config in g2
+    copy: 
+      src: httpd.conf
+      dest: /etc/httpd/conf/httpd.conf
+
+  - name: Restarting HTTPD in g2
+    service:
+      name: httpd
+      state: restarted
+
+
+
+
+... 

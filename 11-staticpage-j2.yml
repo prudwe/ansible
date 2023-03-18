@@ -1,0 +1,16 @@
+---
+- name: Installing HTTPD in g2
+  hosts: all
+  become: yes
+  vars:
+     user_name: Prudhvi
+
+  tasks:
+  - name: Adding static page to all servers
+    template: 
+      src: static.j2
+      dest: /var/www/html/static.html
+
+
+
+...

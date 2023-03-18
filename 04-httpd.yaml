@@ -1,0 +1,22 @@
+---
+- name: Installing HTTPD in g2
+  hosts: g2
+  become: yes
+
+  tasks:
+  - name: Install HTTPD in g2
+    package: 
+      name: httpd
+      state: present
+
+  - name: Starting HTTP
+    service:
+      name: httpd
+      state: started
+
+  - name: Enabling HTTP
+    service:
+      name: httpd
+      enabled: true
+
+... 

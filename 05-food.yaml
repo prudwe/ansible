@@ -1,0 +1,17 @@
+---
+- name: Deploying FOOD app in g2
+  hosts: g2
+  become: yes
+
+  tasks:
+  - name: Install GIT in g2
+    package: 
+      name: git
+      state: present
+
+  - name: Cloning FOOD code to g2
+    git:
+      dest: /var/www/html
+      repo: https://github.com/ravi2krishna/food.git
+
+... 
